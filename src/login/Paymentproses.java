@@ -4,6 +4,11 @@
  */
 package login;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import static login.Registration_data.totalharga;
 /**
  *
  * @author april
@@ -13,8 +18,54 @@ public class Paymentproses extends javax.swing.JFrame {
     /**
      * Creates new form Paymentproses
      */
+    Timer timer;
+    int detik;
+    int menit;
     public Paymentproses() {
         initComponents();
+        String strd = Integer.toString(totalharga);
+        paymenttotal.setText(strd);
+        //set detik awal
+        detik = 0;
+        //set menit awal
+        menit = 15;
+        //panggil method hitungMundur
+        hitungMundur();
+    }
+    
+     public void hitungMundur(){
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //set label detik untuk penambahan teks 0
+                if(detik<10)
+                    labeltimerdetik.setText("0"+detik);
+                else
+                    labeltimerdetik.setText(""+detik);
+                //set label menit untuk penambahan teks 0
+                if(menit<10)
+                    labeltimermenit.setText("0"+menit);
+                else
+                    labeltimermenit.setText(""+menit);
+                //menit berkurang jika detik==0
+                if(detik==0){
+                    menit--;
+                    //jika menit <0 maka waktu habis
+                    if(menit<0){
+                        JOptionPane.showMessageDialog(null,
+                            "Waktu Habis, Anda Akan Dipindahkan Ke Halaman Transaksi");
+                        timer.stop();
+                        List_transaksi ltt = new List_transaksi();
+                        ltt.setVisible(true);
+                        ltt.pack();
+                        ltt.setLocationRelativeTo(null);
+                    }
+                    detik = 60;
+                }
+                detik--;
+            }
+        });
+        timer.start();
     }
 
     /**
@@ -38,18 +89,22 @@ public class Paymentproses extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        labeltimermenit = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
+        paymenttotal = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        viewtransaction = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        labeltimerdetik = new javax.swing.JLabel();
+        labeltimermenit1 = new javax.swing.JLabel();
+        viewtransaction1 = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,7 +208,7 @@ public class Paymentproses extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(3, 3, 3)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
                 .addComponent(transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tiket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,8 +231,7 @@ public class Paymentproses extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         jLabel7.setText("Please Finish Your Payment In");
 
-        jLabel8.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
-        jLabel8.setText("00:51:22");
+        labeltimermenit.setFont(new java.awt.Font("Poppins SemiBold", 1, 48)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Poppins SemiBold", 1, 12)); // NOI18N
         jLabel9.setText("Before Saturday, 13th May 2023 | 10.42");
@@ -217,9 +271,8 @@ public class Paymentproses extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel13.setText("Total Payment");
 
-        jLabel33.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel33.setText("Rp 188.900 ");
+        paymenttotal.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        paymenttotal.setForeground(new java.awt.Color(255, 102, 0));
 
         jLabel14.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel14.setText("3816529151135217");
@@ -227,43 +280,54 @@ public class Paymentproses extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel15.setText("TodayTickets");
 
-        jButton1.setBackground(new java.awt.Color(0, 136, 142));
-        jButton1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("View Transaction Detail");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        viewtransaction.setBackground(new java.awt.Color(0, 136, 142));
+        viewtransaction.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        viewtransaction.setForeground(new java.awt.Color(255, 255, 255));
+        viewtransaction.setText("View Transaction Detail");
+        viewtransaction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                viewtransactionActionPerformed(evt);
             }
         });
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ADA.jpg"))); // NOI18N
 
+        labeltimerdetik.setFont(new java.awt.Font("Poppins SemiBold", 1, 48)); // NOI18N
+
+        labeltimermenit1.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
+        labeltimermenit1.setText(":");
+
+        viewtransaction1.setBackground(new java.awt.Color(51, 51, 51));
+        viewtransaction1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        viewtransaction1.setForeground(new java.awt.Color(255, 255, 255));
+        viewtransaction1.setText("Submit");
+        viewtransaction1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewtransaction1ActionPerformed(evt);
+            }
+        });
+
+        jLabel34.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel34.setText("Rp ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel8))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel33))
+                                .addComponent(jLabel34)
+                                .addGap(3, 3, 3)
+                                .addComponent(paymenttotal, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -272,13 +336,33 @@ public class Paymentproses extends javax.swing.JFrame {
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addComponent(jLabel14))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(32, 32, 32))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(labeltimermenit, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labeltimermenit1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labeltimerdetik, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(viewtransaction1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(viewtransaction, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,16 +371,24 @@ public class Paymentproses extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labeltimerdetik, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                            .addComponent(labeltimermenit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(labeltimermenit1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(paymenttotal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -310,8 +402,10 @@ public class Paymentproses extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addComponent(viewtransaction1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(viewtransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
 
@@ -331,7 +425,7 @@ public class Paymentproses extends javax.swing.JFrame {
                 .addComponent(headbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -380,9 +474,23 @@ List_transaksi lt = new List_transaksi();
         tiket.setBackground( new Color(8, 136, 142) );
     }//GEN-LAST:event_tiketMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void viewtransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewtransactionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        List_transaksi lt = new List_transaksi();
+        lt.setVisible(true);
+        lt.pack();
+        lt.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_viewtransactionActionPerformed
+
+    private void viewtransaction1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewtransaction1ActionPerformed
+        // TODO add your handling code here:
+        Detail_transaksi dt = new Detail_transaksi();
+        dt.setVisible(true);
+        dt.pack();
+        dt.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_viewtransaction1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,7 +529,6 @@ List_transaksi lt = new List_transaksi();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel headbar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -431,18 +538,23 @@ List_transaksi lt = new List_transaksi();
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel labeltimerdetik;
+    private javax.swing.JLabel labeltimermenit;
+    private javax.swing.JLabel labeltimermenit1;
+    private javax.swing.JLabel paymenttotal;
     private javax.swing.JPanel tiket;
     private javax.swing.JPanel transaksi;
+    private javax.swing.JButton viewtransaction;
+    private javax.swing.JButton viewtransaction1;
     // End of variables declaration//GEN-END:variables
 }

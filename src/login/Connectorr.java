@@ -7,6 +7,7 @@ package login;
 import java.sql.*;
 import com.sun.jdi.connect.spi.Connection;
 import javax.swing.JOptionPane;
+import java.sql.Statement;
 /**
  *
  * @author april
@@ -23,6 +24,7 @@ public class Connectorr {
         try{
             Class.forName(JDBC_DRIVER);
             koneksi = (java.sql.Connection) DriverManager.getConnection(DB_URL, USER, PASS);
+            statement = koneksi.createStatement();
             System.out.println("Koneksi Berhasil");
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());

@@ -4,17 +4,29 @@
  */
 package login;
 import java.awt.Color;
+import static login.Proses_tiket1.presale1;
+import static login.Proses_tiket1.clicked;
 /**
  *
  * @author april
  */
 public class Registration_data extends javax.swing.JFrame {
-
+public static int totalharga;
     /**
      * Creates new form Registration_data
      */
     public Registration_data() {
         initComponents();
+        int fee = 8900;
+        totalharga = presale1 + fee;
+        String strd = Integer.toString(presale1);
+        String str = Integer.toString(clicked);
+        String tth = Integer.toString(totalharga);
+        tiketharga.setText(strd);
+        count2.setText(str);
+        tickettotal.setText(strd);
+        totalpayment.setText(tth);
+        
     }
 
     /**
@@ -64,17 +76,21 @@ public class Registration_data extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
+        tiketharga = new javax.swing.JLabel();
+        tiketharga1 = new javax.swing.JLabel();
+        count2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        paynow = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
+        tickettotal = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        totalpayment = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -378,7 +394,7 @@ public class Registration_data extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(jLabel17)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -413,15 +429,21 @@ public class Registration_data extends javax.swing.JFrame {
         jLabel22.setText("Ticket Details");
 
         jLabel23.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel23.setText("Presale 2 Festival");
+        jLabel23.setText("Presale 1 Festival");
 
         jLabel24.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel24.setText("Rp 180.000 x 1");
+        jLabel24.setText("Rp 150.000 x");
 
-        jLabel25.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel25.setText("Rp 180.000 ");
+        tiketharga.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        tiketharga.setForeground(new java.awt.Color(255, 102, 0));
+
+        tiketharga1.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        tiketharga1.setForeground(new java.awt.Color(255, 102, 0));
+        tiketharga1.setText("Rp");
+
+        count2.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        count2.setForeground(new java.awt.Color(255, 102, 0));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -431,9 +453,14 @@ public class Registration_data extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23)
-                    .addComponent(jLabel24))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addGap(3, 3, 3)
+                        .addComponent(count2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel25)
+                .addComponent(tiketharga1)
+                .addGap(6, 6, 6)
+                .addComponent(tiketharga, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(214, 214, 214)
@@ -448,35 +475,50 @@ public class Registration_data extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(count2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tiketharga, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tiketharga1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
-        jPanel6.setBackground(new java.awt.Color(3, 121, 145));
+        paynow.setBackground(new java.awt.Color(3, 121, 145));
+        paynow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paynowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                paynowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                paynowMouseExited(evt);
+            }
+        });
 
         jLabel26.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Pay Now");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+        javax.swing.GroupLayout paynowLayout = new javax.swing.GroupLayout(paynow);
+        paynow.setLayout(paynowLayout);
+        paynowLayout.setHorizontalGroup(
+            paynowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paynowLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
                 .addComponent(jLabel26)
-                .addGap(93, 93, 93))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+        paynowLayout.setVerticalGroup(
+            paynowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paynowLayout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(jLabel26)
                 .addContainerGap())
@@ -491,9 +533,8 @@ public class Registration_data extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel29.setText("Internet Fee");
 
-        jLabel30.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel30.setText("Rp 180.000 ");
+        tickettotal.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        tickettotal.setForeground(new java.awt.Color(255, 102, 0));
 
         jLabel31.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 102, 0));
@@ -504,7 +545,14 @@ public class Registration_data extends javax.swing.JFrame {
 
         jLabel33.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel33.setText("Rp 188.900 ");
+        jLabel33.setText("Rp  ");
+
+        jLabel34.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel34.setText("Rp");
+
+        totalpayment.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        totalpayment.setForeground(new java.awt.Color(255, 102, 0));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -512,25 +560,34 @@ public class Registration_data extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel27)
-                        .addGap(29, 29, 29)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(totalpayment, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(paynow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel31))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(314, 314, 314)
+                                .addComponent(jLabel34)
+                                .addGap(6, 6, 6)
+                                .addComponent(tickettotal, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel31)
+                                .addGap(35, 35, 35))))))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(206, 206, 206)
                 .addComponent(jLabel32)
@@ -540,6 +597,9 @@ public class Registration_data extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(totalpayment, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -551,13 +611,14 @@ public class Registration_data extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tickettotal, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(paynow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
 
@@ -575,9 +636,8 @@ public class Registration_data extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -629,8 +689,11 @@ List_transaksi lt = new List_transaksi();
 
     private void tiketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tiketMouseClicked
         // TODO add your handling code here:
- List_ticket ltc = new List_ticket();
+        List_ticket ltc = new List_ticket();
         ltc.setVisible(true);
+        ltc.pack();
+        ltc.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_tiketMouseClicked
 
     private void tiketMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tiketMouseEntered
@@ -654,6 +717,25 @@ List_transaksi lt = new List_transaksi();
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void paynowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paynowMouseClicked
+        // TODO add your handling code here:
+        Paymentproses pp = new Paymentproses();
+        pp.setVisible(true);
+        pp.pack();
+        pp.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_paynowMouseClicked
+
+    private void paynowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paynowMouseEntered
+        // TODO add your handling code here:
+        paynow.setBackground( new Color(5, 81, 84) );
+    }//GEN-LAST:event_paynowMouseEntered
+
+    private void paynowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paynowMouseExited
+        // TODO add your handling code here:
+        paynow.setBackground( new Color(8, 136, 142) );
+    }//GEN-LAST:event_paynowMouseExited
 
     /**
      * @param args the command line arguments
@@ -691,6 +773,7 @@ List_transaksi lt = new List_transaksi();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel count2;
     private javax.swing.JPanel headbar;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -710,16 +793,15 @@ List_transaksi lt = new List_transaksi();
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
@@ -732,13 +814,17 @@ List_transaksi lt = new List_transaksi();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel paynow;
+    private javax.swing.JLabel tickettotal;
     private javax.swing.JPanel tiket;
     private javax.swing.JPanel tiket1;
+    private javax.swing.JLabel tiketharga;
+    private javax.swing.JLabel tiketharga1;
+    private javax.swing.JLabel totalpayment;
     private javax.swing.JPanel transaksi;
     // End of variables declaration//GEN-END:variables
 }

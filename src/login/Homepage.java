@@ -718,6 +718,9 @@ public class Homepage extends javax.swing.JFrame {
         // TODO add your handling code here:
         List_ticket ltc = new List_ticket();
         ltc.setVisible(true);
+        ltc.pack();
+        ltc.setLocationRelativeTo(null);
+        this.dispose();
 
     }//GEN-LAST:event_tiketMouseClicked
 
@@ -735,12 +738,18 @@ public class Homepage extends javax.swing.JFrame {
         // TODO add your handling code here:
         List_transaksi lt = new List_transaksi();
         lt.setVisible(true);
+        lt.pack();
+        lt.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_transaksiMouseClicked
 
     private void tiket1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tiket1MouseClicked
         // TODO add your handling code here:
         Proses_tiket1 protkt1 = new Proses_tiket1();
         protkt1.setVisible(true);
+        protkt1.pack();
+        protkt1.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_tiket1MouseClicked
 
     /**
