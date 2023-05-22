@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/login/Login_page.java</file>
-            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/login/Register.java</file>
-            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/login/Connectorr.java</file>
+            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/view/Downloadtiket.java</file>
+            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/view/Login_page.java</file>
+            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/view/Homepage.java</file>
+            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/view/Myticket.java</file>
+            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/view/Proses_tiket1.java</file>
+            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/view/Registration_data.java</file>
+            <file>file:/D:/PRAKTIKUM%20PBO/TAFIX/src/view/Detail_transaksi.java</file>
         </group>
     </open-files>
 </project-private>
